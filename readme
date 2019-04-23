@@ -1,0 +1,5 @@
+使用方法
+r := gin.Default()
+
+r.GET("/debug/vars", GinHandler())
+r.Run(":7777")
