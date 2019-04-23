@@ -1,5 +1,24 @@
-使用方法
-r := gin.Default()
+gin-monitor 是基于gin的api检测组件，使用以下方法可以进行使用
 
-r.GET("/debug/vars", GinHandler())
-r.Run(":7777")
+
+使用方法
+package main
+
+import (
+	"github.com/gin-gonic/gin"
+	gm "github.com/liuqimin/gin_monitor"
+	)
+
+func Test() interface{}{
+	return "test"
+}
+func main(){
+	r := gin.Default()
+
+	r.GET("/debug/vars", gm.GinHandler())  //通过调用GinHandler可以在/debug/vars上做监控api
+	gm.Publish("test",gm.Func(Test))   //通过Push方法定制k-v值
+	r.Run(":7777")
+}
+
+
+
